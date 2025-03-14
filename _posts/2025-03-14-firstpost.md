@@ -2,7 +2,8 @@
 layout: post
 title: My First Jekyll Post
 tags: first markdown example
-categories: demo
+date: 2025-03-14
+categories: testing
 ---
 
 
