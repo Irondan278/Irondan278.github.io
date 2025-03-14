@@ -12,5 +12,5 @@ Hi, I'm **Danny**. Technology is my trade and my hobbies are just about everythi
 
 ### Links
 
-- [Visit My Blog](dannyenns.com/resume)
-- [View My Resume](dannyenns.com/blog)
+- [Visit My Blog](/resume)
+- [View My Resume](/blog)
