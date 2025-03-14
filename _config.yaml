@@ -7,3 +7,16 @@ description: "Great site about Jekyll on GH-Pages."
 
 # Build settings
 remote_theme: jekyll/minima
+
+# Default layouts
+defaults:
+  - scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: "resume"
+      type: "pages"
+    values:
+      layout: "resume"
