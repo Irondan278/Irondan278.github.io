@@ -1,10 +1,4 @@
-# My Personal Website
+Hey this is Danny's site. Click here for remote support.
 
-## Welcome!
+https://www.helpwire.app/builds/?token=MBhxcdYvGqWd5U7WMPHkWLQudppUd7fLlNwbruv9
 
-Hi, I'm **[Your Name]**. I'm passionate about _[your interests or profession]_. Feel free to check out my blog or my resume!
-
-### Links
-
-- [Visit My Blog](Your Blog URL)
-- [View My Resume](Your Resume URL)
