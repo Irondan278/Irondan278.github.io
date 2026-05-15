@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Danny Enns</title>
+  <meta name="description" content="Senior Systems Administrator based in Wheatley, Ontario. Building and automating IT environments across identity, MDM, ERP, and AI tooling." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #F4F1EB;
+      --surface:   #FDFAF4;
+      --border:    #DDD9D0;
+      --text:      #1C1C1C;
+      --muted:     #6B6860;
+      --accent:    #2A6B3E;
+      --accent-lt: #E8F2EC;
+      --mono:      'DM Mono', monospace;
+      --serif:     'Playfair Display', serif;
+      --sans:      'Figtree', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Page shell ── */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* ── Top nav ── */
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 72px;
+      animation: fadeDown 0.5s ease both;
+    }
+
+    nav a {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 0;
+      border-bottom: 1px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 64px;
+      animation: fadeUp 0.6s ease 0.1s both;
+    }
+
+    .hero-text h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 8vw, 4.2rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.0;
+      margin-bottom: 16px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 440px;
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+      margin-top: 20px;
+    }
+
+    /* ── Photo ── */
+
+    /*
+      ┌─────────────────────────────────────────────────────┐
+      │  PHOTO INSTRUCTIONS                                 │
+      │  Replace the placeholder below with your image.    │
+      │                                                     │
+      │  Option A — Local file:                             │
+      │    1. Add your photo to the same folder as this     │
+      │       file, e.g. photo.jpg                          │
+      │    2. Change src="" to src="photo.jpg"              │
+      │    3. Remove the .placeholder styles if you like    │
+      │                                                     │
+      │  Option B — External URL:                           │
+      │    Set src="https://..." directly                   │
+      │                                                     │
+      │  Recommended size: at least 400×400px, square crop  │
+      └─────────────────────────────────────────────────────┘
+    */
+
+    .photo-wrap {
+      width: 190px;
+      height: 190px;
+      flex-shrink: 0;
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      display: block;
+    }
+
+    /* Placeholder shown when src is empty or image fails */
+    .photo-wrap img.placeholder,
+    .photo-wrap img[src=""] {
+      background: var(--surface);
+      border: 2px dashed var(--border);
+      position: relative;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      border: 2px dashed var(--border);
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--muted);
+    }
+
+    .photo-placeholder svg {
+      width: 40px;
+      height: 40px;
+      opacity: 0.35;
+    }
+
+    .photo-placeholder span {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 2px solid var(--text);
+      margin-bottom: 52px;
+      animation: fadeUp 0.6s ease 0.18s both;
+    }
+
+    /* ── About ── */
+    .about {
+      margin-bottom: 56px;
+      animation: fadeUp 0.6s ease 0.22s both;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .about p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 14px;
+      max-width: 640px;
+    }
+
+    .about p:last-child { margin-bottom: 0; }
+
+    /* ── Quick links ── */
+    .links-section {
+      animation: fadeUp 0.6s ease 0.30s both;
+      margin-bottom: 56px;
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      text-decoration: none;
+      color: var(--text);
+      transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+    }
+
+    .link-card:hover {
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .link-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--accent-lt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .link-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .link-sub {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    /* ── Currently ── */
+    .currently {
+      animation: fadeUp 0.6s ease 0.36s both;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 5px 14px 5px 10px;
+      font-size: 0.82rem;
+      font-weight: 400;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .pill-dot.pulse {
+      animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      max-width: 760px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover { opacity: 0.7; }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 560px) {
+      .page { padding: 36px 16px 60px; }
+      nav { margin-bottom: 48px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .photo-wrap {
+        width: 140px;
+        height: 140px;
+        order: -1;
+      }
+
+      .hero-text h1 { font-size: 2.6rem; }
+      .links-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 380px) {
+      .links-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Print ── */
+    @media print {
+      .link-card:hover { transform: none; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/resume">View Résumé →</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Senior Systems Administrator</div>
+      <h1>Danny<br>Enns</h1>
+      <p class="hero-tagline">Humanity for support,<br>automation for infrastructure.</p>
+    </div>
+
+    <!-- ↓ Replace src="" with your image path, e.g. src="photo.jpg" -->
+    <div class="photo-wrap">
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        <span>Your photo</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="section-label">About</div>
+    <p>
+      I'm a Senior Systems Administrator with 7+ years building, integrating, and automating
+      IT environments — spanning identity, device management, ERP, networking, and AI tooling.
+      Currently at <strong>Sensei Ag Inc.</strong> in Leamington, Ontario, where I work across
+      a small team keeping technology invisible and employees productive.
+    </p>
+    <p>
+      I care about building systems that scale without growing complexity for the people who use
+      them. That means thoughtful automation, clean integrations, and support that still feels
+      human.
+    </p>
+  </section>
+
+  <!-- LINKS -->
+  <section class="links-section">
+    <div class="section-label">Find me</div>
+    <div class="links-grid">
+      <a class="link-card" href="/resume">
+        <div class="link-icon">📄</div>
+        <div>
+          <div class="link-label">Résumé</div>
+          <div class="link-sub">dannyenns.com/resume</div>
+        </div>
+      </a>
+      <a class="link-card" href="mailto:ennsdanny@gmail.com">
+        <div class="link-icon">✉️</div>
+        <div>
+          <div class="link-label">Email</div>
+          <div class="link-sub">ennsdanny@gmail.com</div>
+        </div>
+      </a>
+      <!-- Uncomment and fill in if you have a LinkedIn:
+      <a class="link-card" href="https://linkedin.com/in/yourhandle" target="_blank" rel="noopener">
+        <div class="link-icon">💼</div>
+        <div>
+          <div class="link-label">LinkedIn</div>
+          <div class="link-sub">linkedin.com/in/yourhandle</div>
+        </div>
+      </a>
+      -->
+      <a class="link-card" href="https://github.com" target="_blank" rel="noopener">
+        <div class="link-icon">🐙</div>
+        <div>
+          <div class="link-label">GitHub</div>
+          <div class="link-sub">github.com</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CURRENTLY -->
+  <section class="currently">
+    <div class="section-label">Currently</div>
+    <div class="pill-row">
+      <div class="pill"><div class="pill-dot pulse"></div>Working at Sensei Ag</div>
+      <div class="pill"><div class="pill-dot"></div>Leamington, Ontario</div>
+      <div class="pill"><div class="pill-dot"></div>AI &amp; MCP tooling</div>
+      <div class="pill"><div class="pill-dot"></div>Homelab tinkering</div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>Danny Enns · Wheatley, Ontario</span>
+  <span><a href="mailto:ennsdanny@gmail.com">ennsdanny@gmail.com</a> · <a href="tel:2263405352">226-340-5352</a></span>
+</footer>
+
+</body>
+</html>
