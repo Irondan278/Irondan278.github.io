@@ -1,0 +1,15 @@
+# favorites.txt — exported 2026-07-27
+# Replace the favorites.txt next to this widget with this file
+# to make these the default picks for everyone.
+
+Strawberries
+Sweet Corn
+Peaches
+Watermelon
+Apples
+Onions
+Potatoes
+Clementines
+Lemons
+Mango
+Avocado
